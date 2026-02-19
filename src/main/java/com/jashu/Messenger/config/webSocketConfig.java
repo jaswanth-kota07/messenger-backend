@@ -15,7 +15,7 @@ public class webSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("https://whatsapp-clone-snowy.vercel.app")
+                .setAllowedOrigins("https://whatsapp-clone-snowy.vercel.app","http://localhost:5173")
                 .withSockJS();
     }
 

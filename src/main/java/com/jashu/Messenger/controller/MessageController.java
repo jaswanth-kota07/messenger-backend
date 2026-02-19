@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://whatsapp-clone-snowy.vercel.app")
+@CrossOrigin(origins = {"https://whatsapp-clone-snowy.vercel.app","http://localhost:5173"})
 @RequestMapping("/api")
 public class MessageController {
 
