@@ -8,6 +8,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -40,6 +43,10 @@ public class Message {
     @NotNull
     @JsonProperty("receiverid")
     private UUID receiverId;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
 
     public Message(String message, UUID chatId, UUID senderId, UUID receiverId) {
         this.message = message;

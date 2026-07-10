@@ -1,7 +1,7 @@
 package com.jashu.Messenger.controller;
 
 import com.jashu.Messenger.dto.MessageRequest;
-import com.jashu.Messenger.model.Message;
+import com.jashu.Messenger.dto.MessageResponse;
 import com.jashu.Messenger.security.UserPrincipal;
 import com.jashu.Messenger.service.MessageService;
 import jakarta.validation.Valid;
@@ -32,7 +32,7 @@ public class ChatSocketController {
             throw new AccessDeniedException("Unauthorized websocket message");
         }
 
-        Message msg = service.saveMessage(message, userPrincipal.getId());
+        MessageResponse msg = service.saveMessage(message, userPrincipal.getId());
         log.info("Successfully saved message ID: {} and broadcasting to topic: /topic/chat/{}", msg.getId(), msg.getChatId());
 
         template.convertAndSend("/topic/chat/" + msg.getChatId(), msg);
