@@ -1,40 +1,48 @@
 package com.jashu.Messenger.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.UUID;
 
 @Entity
-@Table(name = "users")  // renamed table to avoid 'user' keyword
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-    @Column(name = "username")  // maps DB column 'username'
-    private String user;          // keep Java field 'user'
+    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(min = 3, max = 30)
+    private String username;
 
+    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email
+    @Size(max = 100)
+    private String email;
+
+    @Column(nullable = false)
+    @NotBlank
     private String password;
 
-    // Constructors
-    public User() {}
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.USER;
 
-    public User(String user, String password) {
-        this.user = user;
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
         this.password = password;
     }
-
-    // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getUser() { return user; }
-    public void setUser(String user) { this.user = user; }
-
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
 }

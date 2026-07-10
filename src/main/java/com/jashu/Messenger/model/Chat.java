@@ -1,42 +1,35 @@
 package com.jashu.Messenger.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.UUID;
 
 @Entity
+@Table(name = "chats")
+@Setter
+@Getter
+@NoArgsConstructor
 public class Chat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int chatid;
-    private int user1id;
-    private int user2id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID chatId;
 
-    public Chat() {
-    }
+    @Column(nullable = false)
+    @NotNull
+    private UUID user1Id;
 
-    public Chat(int user1id, int user2id) {
-        this.user1id = user1id;
-        this.user2id = user2id;
-    }
+    @Column(nullable = false)
+    @NotNull
+    private UUID user2Id;
 
-
-    public int getUser1id() {
-        return user1id;
-    }
-
-    public void setUser1id(int user1id) {
-        this.user1id = user1id;
-    }
-
-    public int getUser2id() {
-        return user2id;
-    }
-
-    public void setUser2id(int user2id) {
-        this.user2id = user2id;
+    public Chat(UUID user1Id, UUID user2Id) {
+        this.user1Id = user1Id;
+        this.user2Id = user2Id;
     }
 }

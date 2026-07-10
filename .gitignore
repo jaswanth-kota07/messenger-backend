@@ -1,10 +1,25 @@
-HELP.md
+# Backend - Java/Maven & Spring Boot
+
+# Maven
 target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.backup
+release.properties
+dependency-reduced-pom.xml
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# IDE - IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea_modules/
+
+# IDE - Spring Tools Suite (STS)
 .apt_generated
 .classpath
 .factorypath
@@ -13,13 +28,7 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# IDE - NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -29,5 +38,54 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# IDE - VS Code
 .vscode/
+*.code-workspace
+
+# IDE - Eclipse
+*.jdi
+*.launch
+
+# IDE - Others
+.settings/
+.classpath
+*.launch
+.project
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Application logs
+logs/
+*.log
+spring.log*
+
+# Build artifacts
+*.jar
+*.war
+*.rar
+
+# JetBrains IDE
+*.iml
+
+# Database
+database.db
+*.db
+*.sqlite
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test profiles
+src/main/resources/application-test.yaml
